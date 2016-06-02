@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        {% if title %}
+          <title>{{ title }} | Couture Boutique </title>
+        {% else %}
+          <title>Welcome to Couture Boutique </title>
+        {% endif %}
+        <meta name="description" content="Here goes description" />
+        <meta name="author" content="author name" />
+        <link rel="shortcut icon" href={{ url_for('static', filename='images/favi.png') }} type="image/x-icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet"/> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    </head>
+
+    <body class="home-blog-show">
+        <div class="header">
+            <div class="container">
+                <div class="header-middle-info">
+                    <div class="col-md-4">
+                        <div class="logo">
+                            <a href="index.html">
+                                <img src="{{ url_for('static', filename='images/web-logo.png') }}"alt="site logo" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="menu">
+                    <div class="repsonsive-menu"><i class="icon-406" title="406"></i> Menu</div>
+                    <ul>
+                        <li {%- if request.path == "/" %} class="active" {% endif %}>
+                            <a href="{{ url_for('main.home') }}">Home</a></li>
+                        <li class="menu-item-has-children"><a href="#">Pages</a>
+                            <ul>
+                                <li><a href="{{ url_for('admin.add_product') }}">Add Product</a></li>
+                                <li><a href="{{ url_for('admin.add_category') }}">Add Category</a></li>
+                                <li><a href="error-404.html">Error 404</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                                <li><a href="services.html">Services</a></li>
+                                <li><a href="pricing.html">Pricing</a></li>
+                                <li><a href="product.html">Product page</a></li>
+                                <li><a href="cart.html">Cart page</a></li>
+                                <li><a href="register.html">Register page</a></li>
+                                <li><a href="checkout.html">Checkout page</a></li>
+                                <li><a href="wishlist.html">Wishlist page</a></li>
+                            </ul>
+                        </li>
+
+                        {% if current_user.is_authenticated %}
+                        <li>
+                            <a href="checkout.html"><i class="icon-259" title="Checkout"></i> Logout</a>
+                        </li>
+                        {% else %}  
+                        <li {%- if request.path == "/register" %} class="active" {% endif %}>
+                            <a href="{{ url_for('auth.register') }}"><i class="icon-330" title="My account"></i> Register</a>
+                        </li>
+                        <li {%- if request.path == "/login" %} class="active" {% endif %}>
+                            <a href="{{ url_for('auth.login') }}"><i class="icon-351" title="Login"></i> Login</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        
+        {% block content %}
+        {% endblock %}
+
+        <div class="footer">
+            <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div style="color: #fff">Copyright © 2016 Couture Boutique by Pauline Ngugi | All Rights Reserved</a></div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!-- ======================================================================
+                                        END FOOTER
+        ======================================================================= -->
+    </body>
+
+</html>
