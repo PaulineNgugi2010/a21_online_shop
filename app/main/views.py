@@ -5,10 +5,11 @@ from .. import db
 
 @main.route('/')
 def home():
-    return render_template('index.html', title="Welcome to Couture Boutique")
+    return render_template('home.html', title="Welcome to Couture Boutique")
+
 
 # @main.route('/dashboard')
-# @login_required
+# # @login_required
 # def dashboard():
 #     issue_count = Issue.query.filter(Issue.user_id == current_user.id).count()
 #     resolved_issues = (Issue.query
@@ -24,7 +25,7 @@ def home():
 #     return render_template('dashboard.html', counts=counts, title="Dashboard")
 
 # @main.route('/admin/dashboard')
-# @login_required
+# # @login_required
 # def admin_dashboard():
 #     issue_count = Issue.query.count()
 #     resolved_issues = Issue.query.filter(Issue.is_resolved == True).count()
@@ -32,3 +33,4 @@ def home():
 
 #     counts = dict(issue_count=issue_count, resolved_issues=resolved_issues, issues_in_progress=issues_in_progress)
 #     return render_template('admin_dashboard.html', counts=counts, title="Dashboard")
+
