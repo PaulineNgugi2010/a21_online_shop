@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+<div class="main">
+  
+  <div class="main-inner">
+
+      <div class="container">
+  
+      <div class="row">
+      <div class="span12">
+            
+        <div class="widget widget-plain">
+          
+          <div class="widget-content">
+            
+            <a class="btn btn-large btn-primary btn-support-ask"> <i class="icon-pencil" style="margin-right: 20px"></i> {{ title }}</a> 
+            
+            
+          </div> <!-- /widget-content -->
+            
+        </div> <!-- /widget -->
+        
+      </div> <!-- /span12 -->
+         </div> 
+    
+        <div class="row">
+          
+          <div class="span12">
+            
+            <div class="widget" style="width: 50%; margin:0 auto; margin-bottom: 50px">
+            
+                  <div class="widget-header">
+                    <i class="icon-star"></i>
+                    <h3>Edit A Product</h3>
+                  </div> <!-- /widget-header -->
+                  
+                  <div class="widget-content">
+
+            
+                  {{ wtf.quick_form(form) }}
+                    
+                  </div> <!-- /widget-content -->
+                
+            </div> <!-- /widget -->
+        
+        </div> <!-- /spa12 -->
+
+        </div> <!-- /row -->
+  
+      </div> <!-- /container -->
+    
+  </div> <!-- /main-inner -->
+      
+</div> <!-- /main -->
+{% endblock %}
