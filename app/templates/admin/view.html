@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/utils.html" as utils %}
+<div class="main">
+  
+  <div class="main-inner">
+
+      <div class="container">
+  
+      <div class="row">
+      <div class="span12">
+            
+        <div class="widget widget-plain">
+          
+          <div class="widget-content">
+            
+            <a class="btn btn-large btn-primary btn-support-ask"> <i class="icon-star" style="margin-right: 20px"></i>{{ title }}</a> 
+
+                                  </div> <!-- /widget-content -->
+            
+        </div> <!-- /widget -->
+        
+      </div> <!-- /span12 -->
+     </div> 
+           <!-- Table -->
+  <table class="table">
+   <tr><th>Name</th> <th>Description </th> <th>Category</th><th> Price</th><th>Stock</th><th></th> </tr>
+  {% for i in table %}
+    <tr>
+      <td>{{ i.name }}</td>
+       <td>{{ i.description }}</td>
+      <td>{{ i.category }}</td>
+      <td> {{ i.price }}</td>
+       <td> {{ i.stock }}</td>
+  
+      <td>
+        <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn"><a title="Edit" href="{{ url_for('admin.edit_product', id= i.id)}}"               
+          <i class="glyphicon glyphicon-pencil
+"></i></a></button>
+        <button type="button" class="btn btn-danger"><a title="Delete" href="{{ url_for('admin.delete_product', id= i.id)}}"><i class="glyphicon glyphicon-trash
+"></i></a></button>
+      </div>
+      </td>
+    {% endfor %}
+      
+
+  </tr>
+</table>
+</div>
+{% endblock %}
